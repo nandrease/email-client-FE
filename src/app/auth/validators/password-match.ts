@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
+import {Injectable} from '@angular/core';
 import { Validator, FormGroup } from "@angular/forms";
 
-@Injectable({ providedIn: "root" })
+@Injectable({providedIn: 'root'})
 export class PasswordMatch implements Validator {
   validate(formGroup: FormGroup) {
     const { password, passwordConfirmation } = formGroup.value;
