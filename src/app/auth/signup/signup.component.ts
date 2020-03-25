@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { PasswordMatch } from "../validators/password-match";
 import { UniqueUser } from "../validators/unique-user";
 import { AuthService } from "../auth.service";
@@ -29,7 +30,12 @@ export class SignupComponent implements OnInit {
     }
   );
 
-  constructor(private passowrdMatch: PasswordMatch, private uniqueUser: UniqueUser, private authService: AuthService) {}
+  constructor(
+    private passowrdMatch: PasswordMatch,
+    private uniqueUser: UniqueUser,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -39,8 +45,8 @@ export class SignupComponent implements OnInit {
     }
 
     this.authService.signup(this.authForm.value).subscribe({
-      next: response => {
-        // Navigate to some other route
+      next: () => {
+        this.router.navigateByUrl("/inbox");
       },
       error: err => {
         // Internet problems
