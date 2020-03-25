@@ -18,6 +18,10 @@ interface SignedInResponse {
   authenticated: boolean;
   username: string;
 }
+interface SigninCedentials {
+  username: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: "root"
@@ -44,6 +48,10 @@ export class AuthService {
 
   signout() {
     return this.http.post(this.rootUrl + "/auth/signout", {}).pipe(tap(() => this.signedIn$.next(false)));
+  }
+
+  signin(credentials: SigninCedentials) {
+    return this.http.post(this.rootUrl + "/auth/signin", credentials).pipe(tap(() => this.signedIn$.next(true)));
   }
 
   checkAuth() {
