@@ -1,0 +1,6 @@
+<form [formGroup]="emailForm" class="ui form">
+    <app-input label="To" type="email" [control]="emailForm.get('to')"></app-input>
+    <app-input label="From" type="email" [control]="emailForm.get('from')"></app-input>
+    <app-input label="Subject" [control]="emailForm.get('subject')"></app-input>
+    <app-input label="Content" [control]="emailForm.get('text')"></app-input>
+</form>
